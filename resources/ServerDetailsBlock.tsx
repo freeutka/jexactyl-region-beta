@@ -252,28 +252,14 @@ function ServerDetailsBlock({ className }: { className?: string }) {
             >
                 <Limit limit={textLimits.disk}>{bytesToString(stats.disk)}</Limit>
             </StatBlock>
-            <StatBlock 
-                icon={faCloudDownloadAlt} 
-                title={'Network (Inbound)'} 
-                className={'col-span-5 lg:col-span-2'}
-            >
-                {status === 'offline' ? <span className={'text-slate-400'}>Offline</span> : bytesToString(stats.rx)}
-            </StatBlock>
-            <StatBlock 
-                icon={faCloudUploadAlt} 
-                title={'Network (Outbound)'} 
-                className={'col-span-5 lg:col-span-2'}
-            >
-                {status === 'offline' ? <span className={'text-slate-400'}>Offline</span> : bytesToString(stats.tx)}
-            </StatBlock>
             {ipInfo && (
-                <RegionStatBlock 
+                <StatBlock 
                     icon_name={ipInfo.country_code} 
                     title={'Region'}
                     className={'col-span-5 lg:col-span-2'}
                 >
                     <RegionNameLimit limit={ipInfo.city}>{ipInfo.country_name}</RegionNameLimit>
-                </RegionStatBlock>
+                </StatBlock>
             )}
         </div>
     );
