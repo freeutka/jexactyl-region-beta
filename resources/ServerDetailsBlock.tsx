@@ -253,13 +253,13 @@ function ServerDetailsBlock({ className }: { className?: string }) {
                 <Limit limit={textLimits.disk}>{bytesToString(stats.disk)}</Limit>
             </StatBlock>
             {ipInfo && (
-                <StatBlock 
+                <RegionStatBlock 
                     icon_name={ipInfo.country_code} 
                     title={'Region'}
                     className={'col-span-5 lg:col-span-2'}
                 >
                     <RegionNameLimit limit={ipInfo.city}>{ipInfo.country_name}</RegionNameLimit>
-                </StatBlock>
+                </RegionStatBlock>
             )}
         </div>
     );
