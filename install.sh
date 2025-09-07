@@ -35,21 +35,25 @@ startPterodactyl(){
     export NVM_DIR="$HOME/.nvm"
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    nvm install node || {
+    
+    nvm install 18 || {
         printf "${watermark} nvm command not found, trying to source nvm script directly... \n"
         . ~/.nvm/nvm.sh
-        nvm install node
+        nvm install 18
     }
+    
+    nvm use 18
     apt update
-
-    npm i -g yarn
-    yarn
-    export NODE_OPTIONS=--openssl-legacy-provider
-    yarn build:production || {
-        printf "${watermark} node: --openssl-legacy-provider is not allowed in NODE_OPTIONS \n"
-        export NODE_OPTIONS=
-        yarn build:production
+    npm install -g pnpm@9.0.6
+    corepack enable 2>/dev/null || true
+    pnpm install
+    
+    pnpm run build || {
+        printf "${watermark} Build failed, trying with legacy OpenSSL provider... \n"
+        export NODE_OPTIONS=--openssl-legacy-provider
+        pnpm run build
     }
+    
     sudo php artisan optimize:clear
 }
 
