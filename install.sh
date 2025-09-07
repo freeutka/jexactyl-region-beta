@@ -66,12 +66,14 @@ installModule(){
     git clone https://github.com/freeutka/jexactyl-region-beta.git
     printf "${watermark} Cloning git repository \n"
     rm -f resources/scripts/components/server/console/RegionStatBlock.tsx
+    rm -f resources/scripts/components/server/console/StatBlock.tsx
     rm -f resources/scripts/components/server/console/ServerDetailsBlock.tsx
     rm -rvf resources/scripts/assets/regions
     printf "${watermark} Previous files successfully removed \n"
     cd jexactyl-region-beta
     mv resources/regions "$target_dir/resources/scripts/assets/"
     mv resources/RegionStatBlock.tsx "$target_dir/resources/scripts/components/server/console/"
+    mv resources/StatBlock.tsx "$target_dir/resources/scripts/components/server/console/"
     mv resources/ServerDetailsBlock.tsx "$target_dir/resources/scripts/components/server/console/"
     printf "${watermark} New files successfully installed \n"
     rm -rvf "$target_dir/jexactyl-region-beta"

@@ -202,14 +202,14 @@ function ServerDetailsBlock({ className }: { className?: string }) {
     });
 
     return (
-        <div className={classNames('grid grid-cols-10 gap-2 md:gap-4 mb-6', className)}>
-            <StatBlock icon={faWifi} title={'Address'} className={'col-span-5 lg:col-span-2'} copyOnClick={allocation}>
+        <div className={classNames('grid grid-cols-8 gap-2 md:gap-3 mb-6', className)}>
+            <StatBlock icon={faWifi} title={'Address'} className={'col-span-4 lg:col-span-2'} copyOnClick={allocation}>
                 {allocation}
             </StatBlock>
             <StatBlock
                 icon={faClock}
                 title={'Uptime'}
-                className={'col-span-5 lg:col-span-2'}
+                className={'col-span-4 lg:col-span-2'}
                 color={getBackgroundColor(status === 'running' ? 0 : status !== 'offline' ? 9 : 10, 10)}
             >
                 {status === null ? (
@@ -223,7 +223,7 @@ function ServerDetailsBlock({ className }: { className?: string }) {
             <StatBlock
                 icon={faMicrochip}
                 title={'CPU Load'}
-                className={'col-span-5 lg:col-span-2'}
+                className={'col-span-4 lg:col-span-2'}
                 color={getBackgroundColor(stats.cpu, limits.cpu)}
             >
                 {status === 'offline' ? (
@@ -235,7 +235,7 @@ function ServerDetailsBlock({ className }: { className?: string }) {
             <StatBlock
                 icon={faMemory}
                 title={'Memory'}
-                className={'col-span-5 lg:col-span-2'}
+                className={'col-span-4 lg:col-span-2'}
                 color={getBackgroundColor(stats.memory / 1024, limits.memory * 1024)}
             >
                 {status === 'offline' ? (
@@ -247,7 +247,7 @@ function ServerDetailsBlock({ className }: { className?: string }) {
             <StatBlock
                 icon={faHdd}
                 title={'Disk'}
-                className={'col-span-5 lg:col-span-2'}
+                className={'col-span-4 lg:col-span-2'}
                 color={getBackgroundColor(stats.disk / 1024, limits.disk * 1024)}
             >
                 <Limit limit={textLimits.disk}>{bytesToString(stats.disk)}</Limit>
@@ -256,7 +256,7 @@ function ServerDetailsBlock({ className }: { className?: string }) {
                 <RegionStatBlock 
                     icon_name={ipInfo.country_code} 
                     title={'Region'}
-                    className={'col-span-5 lg:col-span-2'}
+                    className={'col-span-4 lg:col-span-2'}
                 >
                     <RegionNameLimit limit={ipInfo.city}>{ipInfo.country_name}</RegionNameLimit>
                 </RegionStatBlock>

@@ -66,11 +66,13 @@ deleteModule(){
     git clone https://github.com/freeutka/jexactyl-region-beta.git
     printf "${watermark} Cloning git repository \n"
     rm -f resources/scripts/components/server/console/RegionStatBlock.tsx
+    rm -f resources/scripts/components/server/console/StatBlock.tsx
     rm -f resources/scripts/components/server/console/ServerDetailsBlock.tsx
     rm -rvf resources/scripts/assets/regions
     printf "${watermark} Module files successfully removed \n"
     cd jexactyl-region-beta
     mv original-resources/ServerDetailsBlock.tsx "$target_dir/resources/scripts/components/server/console/"
+    mv original-resources/StatBlock.tsx "$target_dir/resources/scripts/components/server/console/"
     printf "${watermark} Original files successfully restored \n"
     rm -rvf "$target_dir/jexactyl-region-beta"
     cd "$target_dir"

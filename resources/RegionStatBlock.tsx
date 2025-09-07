@@ -81,7 +81,7 @@ const countryCodeToSvg: {[key: string]: any} = {
     UA, US, VN, ZA, LV
 };
 
-function StatBlock({ title, copyOnClick, icon, icon_name, color, dark, className, children }: StatBlockProps) {
+function RegionStatBlock({ title, copyOnClick, icon, icon_name, color, dark, className, children }: StatBlockProps) {
     const colors = useStoreState(state => state.theme.data!.colors);
     const { fontSize, ref } = useFitText({ minFontSize: 8, maxFontSize: 500 });
 
@@ -90,7 +90,7 @@ function StatBlock({ title, copyOnClick, icon, icon_name, color, dark, className
     return (
         <CopyOnClick text={copyOnClick}>
             <div
-                className={classNames(styles.stat_block, className)}
+                className={classNames(styles.stat_block, 'min-w-0', className)}
                 style={{ backgroundColor: dark ? colors.headers : colors.secondary }}
             >
                 <div 
@@ -107,8 +107,8 @@ function StatBlock({ title, copyOnClick, icon, icon_name, color, dark, className
                         ) : countryCodeToSvg[icon_name!] ? (
                             <img 
                                 style={{ 
-                                    height: '2rem', 
-                                    width: '2rem', 
+                                    height: '1.5rem', 
+                                    width: '1.5rem', 
                                     userSelect: 'none', 
                                     WebkitUserSelect: 'none' 
                                 }} 
@@ -116,12 +116,12 @@ function StatBlock({ title, copyOnClick, icon, icon_name, color, dark, className
                                 alt={icon_name}
                             />
                         ) : (
-                            <span>{icon_name}</span>
+                            <span className={'text-xs'}>{icon_name}</span>
                         )}
                     </div>
                 )}
                 <div className={'flex w-full flex-col justify-center overflow-hidden'}>
-                    <p className={'font-header text-xs leading-tight text-slate-200 md:text-sm'}>{title}</p>
+                    <p className={'font-header text-xs leading-tight text-slate-200 md:text-sm truncate'}>{title}</p>
                     <div
                         ref={ref}
                         className={'h-[1.75rem] w-full truncate font-semibold text-slate-50'}
@@ -135,4 +135,4 @@ function StatBlock({ title, copyOnClick, icon, icon_name, color, dark, className
     );
 }
 
-export default StatBlock;
+export default RegionStatBlock;
