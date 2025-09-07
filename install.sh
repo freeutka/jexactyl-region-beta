@@ -1,19 +1,19 @@
 #!/bin/bash
 
 if (( $EUID != 0 )); then
-    printf "\033[0;33m<jexactyl-region-beta> \033[0;31m[✕]\033[0m Please run this program as root \n"
+    printf "\033[0;33m<jexactyl-region-v4> \033[0;31m[✕]\033[0m Please run this program as root \n"
     exit
 fi
 
-watermark="\033[0;33m<jexactyl-region-beta> \033[0;32m[✓]\033[0m"
+watermark="\033[0;33m<jexactyl-region-v4> \033[0;32m[✓]\033[0m"
 target_dir=""
 
 chooseDirectory() {
-    echo -e "<jexactyl-region-beta> [1] /var/www/jexactyl   (choose this if you installed the panel using the official Jexactyl documentation)"
-    echo -e "<jexactyl-region-beta> [2] /var/www/pterodactyl (choose this if you migrated from Pterodactyl to Jexactyl)"
+    echo -e "<jexactyl-region-v4> [1] /var/www/jexactyl   (choose this if you installed the panel using the official Jexactyl documentation)"
+    echo -e "<jexactyl-region-v4> [2] /var/www/pterodactyl (choose this if you migrated from Pterodactyl to Jexactyl)"
 
     while true; do
-        read -p "<jexactyl-region-beta> [?] Choose jexactyl directory [1/2]: " choice
+        read -p "<jexactyl-region-v4> [?] Choose jexactyl directory [1/2]: " choice
         case "$choice" in
             1)
                 target_dir="/var/www/jexactyl"
@@ -24,7 +24,7 @@ chooseDirectory() {
                 break
                 ;;
             *)
-                echo -e "\033[0;33m<jexactyl-region-beta> \033[0;31m[✕]\033[0m Invalid choice. Please enter 1 or 2."
+                echo -e "\033[0;33m<jexactyl-region-v4> \033[0;31m[✕]\033[0m Invalid choice. Please enter 1 or 2."
                 ;;
         esac
     done
@@ -61,29 +61,29 @@ installModule(){
     chooseDirectory
     printf "${watermark} Installing module... \n"
     cd "$target_dir"
-    rm -rvf jexactyl-region-beta
+    rm -rvf jexactyl-region-v4
     printf "${watermark} Previous module successfully removed \n"
-    git clone https://github.com/freeutka/jexactyl-region-beta.git
+    git clone https://github.com/freeutka/jexactyl-region-v4.git
     printf "${watermark} Cloning git repository \n"
     rm -f resources/scripts/components/server/console/RegionStatBlock.tsx
     rm -f resources/scripts/components/server/console/StatBlock.tsx
     rm -f resources/scripts/components/server/console/ServerDetailsBlock.tsx
     rm -rvf resources/scripts/assets/regions
     printf "${watermark} Previous files successfully removed \n"
-    cd jexactyl-region-beta
+    cd jexactyl-region-v4
     mv resources/regions "$target_dir/resources/scripts/assets/"
     mv resources/RegionStatBlock.tsx "$target_dir/resources/scripts/components/server/console/"
     mv resources/StatBlock.tsx "$target_dir/resources/scripts/components/server/console/"
     mv resources/ServerDetailsBlock.tsx "$target_dir/resources/scripts/components/server/console/"
     printf "${watermark} New files successfully installed \n"
-    rm -rvf "$target_dir/jexactyl-region-beta"
+    rm -rvf "$target_dir/jexactyl-region-v4"
     printf "${watermark} Git repository deleted \n"
     cd "$target_dir"
 
     printf "${watermark} Module fully and successfully installed in your jexactyl repository \n"
 
     while true; do
-        read -p '<jexactyl-region-beta> [?] Do you want rebuild panel assets [y/N]? ' yn
+        read -p '<jexactyl-region-v4> [?] Do you want rebuild panel assets [y/N]? ' yn
         case $yn in
             [Yy]* ) startPterodactyl; break;;
             [Nn]* ) exit;;
@@ -93,7 +93,7 @@ installModule(){
 }
 
 while true; do
-    read -p '<jexactyl-region-beta> [✓] Are you sure that you want to install "jexactyl-region-betas" module [y/N]? ' yn
+    read -p '<jexactyl-region-v4> [✓] Are you sure that you want to install "jexactyl-region-v4s" module [y/N]? ' yn
     case $yn in
         [Yy]* ) installModule; break;;
         [Nn]* ) printf "${watermark} Canceled \n"; exit;;

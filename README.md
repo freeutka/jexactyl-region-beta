@@ -1,15 +1,12 @@
-# BETA
-
----
-
 ## 🌍 Overview
 
-`jexactyl-region-beta` is a free-to-use addon for **Jexactyl v3/v4** that shows the **country** and (if available) **city** of the server directly on its page.  
+`jexactyl-region-v4` is a free-to-use addon for **Jexactyl v4** that shows the **country** and (if available) **city** of the server directly on its page.  
 It works via the [ipapi.is](https://ipapi.is) API.
 
-👉 Fork of [pterodactyl-region](https://github.com/Yarik1333Roky/pterodactyl-region).
+👉 Official fork of [jexactyl-region](https://github.com/freeutka/jexactyl-region). (Use this if need plugin for Jexactyl v3.x)
 
-![Full Screen showcase](https://github.com/freeutka/jexactyl-region-beta/blob/main/pictures/full_screen.png?raw=true)
+Thanks [Dracocraft](https://dracocraft.xyz/) for giving her panel for testing.  
+![Full Screen showcase](https://github.com/freeutka/jexactyl-region-v4/blob/main/pictures/full_screen.png?raw=true)
 
 ---
 
@@ -35,15 +32,15 @@ If your country is not included, feel free to open a **GitHub Issue** and a new 
 Run the included installation script:
 
 ```bash
-git clone https://github.com/freeutka/jexactyl-region-beta.git
-cd jexactyl-region-beta
+git clone https://github.com/freeutka/jexactyl-region-v4.git
+cd jexactyl-region-v4
 bash ./main.sh
 ````
 
 Or in a single line:
 
 ```bash
-git clone https://github.com/freeutka/jexactyl-region-beta.git; cd jexactyl-region-beta; bash ./main.sh
+git clone https://github.com/freeutka/jexactyl-region-v4.git; cd jexactyl-region-v4; bash ./main.sh
 ```
 
 ---
